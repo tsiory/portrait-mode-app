@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+
 interface HTMLElementCustom extends HTMLElement {
   mozRequestFullscreen: () => void;
   webkitRequestFullscreen: () => void;
@@ -8,6 +10,7 @@ export default function useOrientation(orientation: OrientationLockType): {
   lock: (orientation: OrientationLockType) => void;
 } {
   function lock() {
+    console.log('lock() called');
     const de = document.documentElement as HTMLElementCustom;
 
     if (de.requestFullscreen) {
@@ -22,6 +25,20 @@ export default function useOrientation(orientation: OrientationLockType): {
 
     window.screen.orientation.lock(orientation);
   }
+
+  function constructLockBtn() {
+    const buttonLockElt = document.createElement('button');
+    buttonLockElt.setAttribute('onclick', 'lock()');
+    buttonLockElt.hidden = true;
+    document.body.appendChild(buttonLockElt);
+
+    buttonLockElt.click();
+  }
+
+  useEffect(() => {
+    constructLockBtn();
+    lock(); 
+  }, []);
 
   return {
     lock,
