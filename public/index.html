@@ -22,10 +22,32 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
     <title>React App</title>
+    <script>
+      function lock(orientation) {
+        let de = document.documentElement;
+        if (de.requestFullscreen) {de.requestFullscreen()}
+        else if (de.mozRequestFullscreen) {de.mozRequestFullscreen()}
+        else if (de.webkitRequestFullscreen) {de.webkitRequestFullscreen()}
+        else if (de.msRequestFullscreen) {de.msRequestFullscreen()}
+  
+        screen.orientation.lock(orientation);
+      }
+
+      function unlock() {
+        screen.orientation.unlock();
+        if (document.exitFullscreen) {document.exitFullscreen()}
+        else if (document.mozExitFullscreen) {document.mozexitFullscreen()}
+        else if (document.webkitExitFullscreen) {document.webkitExitFullscreen()}
+        else if (document.msExitFullscreen) {document.msRequestFullscreen()}
+      }
+    </script>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
+    <input type="button" value="Lock portrait" onclick="lock('portrait')">
+    <input type="button" value="Lock landscape" onclick="lock('landscape')">
+    <input type="button" value="Unlock" onclick="unlock()">
     <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
