@@ -22,27 +22,7 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
     <title>React App</title>
-    <script>
-      function lock(orientation) {
-        let de = document.documentElement;
-        if (de.requestFullscreen) {de.requestFullscreen()}
-        else if (de.mozRequestFullscreen) {de.mozRequestFullscreen()}
-        else if (de.webkitRequestFullscreen) {de.webkitRequestFullscreen()}
-        else if (de.msRequestFullscreen) {de.msRequestFullscreen()}
-  
-        screen.orientation.lock(orientation);
-      }
-
-      function unlock() {
-        screen.orientation.unlock();
-        if (document.exitFullscreen) {document.exitFullscreen()}
-        else if (document.mozExitFullscreen) {document.mozexitFullscreen()}
-        else if (document.webkitExitFullscreen) {document.webkitExitFullscreen()}
-        else if (document.msExitFullscreen) {document.msRequestFullscreen()}
-      }
-
-      lock('portrait');
-    </script>
+    
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
@@ -57,5 +37,29 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+    <script>
+      function lock(orientation) {
+        console.log('Lock called', orientation);
+
+        let de = document.documentElement;
+        if (de.requestFullscreen) {de.requestFullscreen()}
+        else if (de.mozRequestFullscreen) {de.mozRequestFullscreen()}
+        else if (de.webkitRequestFullscreen) {de.webkitRequestFullscreen()}
+        else if (de.msRequestFullscreen) {de.msRequestFullscreen()}
+  
+        screen.orientation.lock(orientation);
+        console.log('Orientation locked', orientation);
+      }
+
+      function unlock() {
+        screen.orientation.unlock();
+        if (document.exitFullscreen) {document.exitFullscreen()}
+        else if (document.mozExitFullscreen) {document.mozexitFullscreen()}
+        else if (document.webkitExitFullscreen) {document.webkitExitFullscreen()}
+        else if (document.msExitFullscreen) {document.msRequestFullscreen()}
+      }
+
+      lock('portrait');
+    </script>
   </body>
 </html>
