@@ -7,7 +7,7 @@ function App() {
 
   return (
     <div className="App">
-      APP HOOKS
+      APP HOOKS CUSTOM INTERFACE
 
       <button onClick={() => lock('portrait')}>Lock portrait</button>
     </div>

@@ -1,8 +1,14 @@
+interface HTMLElementCustom extends HTMLElement {
+  mozRequestFullscreen: () => void;
+  webkitRequestFullscreen: () => void;
+  msRequestFullscreen: () => void;
+}
+
 export default function useOrientation(orientation: OrientationLockType): {
   lock: (orientation: OrientationLockType) => void;
 } {
   function lock() {
-    const de = document.documentElement as any;
+    const de = document.documentElement as HTMLElementCustom;
 
     if (de.requestFullscreen) {
       de.requestFullscreen();
