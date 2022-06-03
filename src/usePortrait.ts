@@ -38,6 +38,7 @@ export default function useOrientation(orientation: OrientationLockType): {
   useEffect(() => {
     constructLockBtn();
     lock(); 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return {
