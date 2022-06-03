@@ -1,15 +1,13 @@
 import React from 'react';
 import './App.css';
-import useOrientation from './usePortrait';
+import { lockOrientationTo } from './usePortrait';
 
 function App() {
-  const { lock } = useOrientation('portrait');
-
   return (
     <div className="App">
-      AUTO LOCK WITH HOOKS
+      LOCK WITH UTILS
 
-      <button onClick={() => lock('portrait')}>Lock portrait</button>
+      <button onClick={() => lockOrientationTo('portrait')}>Lock portrait</button>
     </div>
   );
 }
