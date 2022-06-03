@@ -1,22 +1,13 @@
 import React from 'react';
 import './App.css';
+import useOrientation from './usePortrait';
 
 function App() {
-  function lock(orientation: OrientationLockType) {
-    console.log('Lock called', orientation);
-
-    let de = document.documentElement as any;
-    if (de.requestFullscreen) {de.requestFullscreen()}
-    else if (de.mozRequestFullscreen) {de.mozRequestFullscreen()}
-    else if (de.webkitRequestFullscreen) {de.webkitRequestFullscreen()}
-    else if (de.msRequestFullscreen) {de.msRequestFullscreen()}
-
-    window.screen.orientation.lock(orientation);
-  }
+  const { lock } = useOrientation('portrait');
 
   return (
     <div className="App">
-      Hello world
+      APP HOOKS
 
       <button onClick={() => lock('portrait')}>Lock portrait</button>
     </div>
