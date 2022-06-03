@@ -40,14 +40,13 @@
         else if (document.webkitExitFullscreen) {document.webkitExitFullscreen()}
         else if (document.msExitFullscreen) {document.msRequestFullscreen()}
       }
+
+      lock('portrait');
     </script>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
-    <input type="button" value="Lock portrait" onclick="lock('portrait')">
-    <input type="button" value="Lock landscape" onclick="lock('landscape')">
-    <input type="button" value="Unlock" onclick="unlock()">
     <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
