@@ -1,13 +1,25 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './App.css';
-import { lockOrientationTo } from './usePortrait';
 
 function App() {
-  return (
-    <div className="App">
-      LOCK WITH UTILS
+  const [screenWidth, setScreenWidth] = useState(0);
 
-      <button onClick={() => lockOrientationTo('portrait')}>Lock portrait</button>
+  useEffect(() => {
+    if (window.screen.width) {
+      setScreenWidth(window.screen.width);
+    }
+  }, [window.screen.width]);
+
+  return (
+    <div className="App" style={{width: '100vw', height: '100vh', backgroundColor: 'dodgerblue', color:'white', display: 'flex', flexDirection: "column", justifyContent: "center", alignItems: 'center'}}>
+      SCREEN WIDTH
+
+      <br />
+
+      <strong>
+        {screenWidth}
+      </strong>
+
     </div>
   );
 }
